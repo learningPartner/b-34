@@ -1,0 +1,181 @@
+
+<button class="btn btn-primary" routerLink="/adminpage">Go to Admin Page</button>
+
+<table style="width: 100%;">
+    <tr>
+        <td>
+            {{courseName}}
+        </td>
+        <td>
+            <label for=""> {{rollNo}}</label>
+           
+        </td>
+        <td>
+            {{isStudentActive}}
+        </td>
+        <td>
+            <span> {{procudePrcie}}</span>
+        </td> 
+    </tr>
+    <tr>
+        <td>
+            <input type="text" value="{{courseName}}" >
+            <br>
+            <input type="text" [value]="courseName" >
+        </td>
+        <td>
+            <select  value="{{selectedCityName}}">
+                <option value="Pune">Pune</option>
+                <option value="Mumbani">Mumbani</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Solapur">Solapur</option>
+            </select>
+        </td>
+        <td>
+            property Binding
+            <input type="checkbox" [checked]="isStudentActive" >
+        </td>
+         <td>
+            interploation
+            <input type="checkbox" value="{{isStudentActive}}" >
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input [type]="inputType">
+        </td>
+        <td>
+            <input type="text" [placeholder]="myPlaceHolderText">
+        </td>
+        <td>
+            <textarea [rows]="noOfRows"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <button (click)="showAlert()">Show Welcome text</button>
+    </tr>
+    <tr>
+        <td>
+            <button (click)="showTechStackName('Java')">Java</button>
+        </td>
+         <td>
+            <button (click)="showTechStackName('Angular')">Angular</button>
+        </td>
+         <td>
+            <button (click)="showTechStackName('React')">React</button>
+        </td>
+         <td>
+            <button (click)="showTechStackName('Dot Net')">Dot Net</button>
+        </td>
+         <td>
+            <button (click)="showTechStackName('Html')">Html</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input [type]="inputType">
+        </td>
+        <td>
+            <button (click)="setInputType('text')">text</button>
+        </td>
+        <td>
+            <button (click)="setInputType('radio')">radio</button>
+        </td>
+        <td>
+            <button (click)="setInputType('checkbox')">checkbox</button>
+        </td>
+         <td>
+            <button (click)="setInputType('date')">date</button>
+        </td>
+         <td>
+            <button (click)="setInputType('color')">color</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <select (change)="onCityChanged()">
+                 <option value="Pune">Pune</option>
+                <option value="Mumbani">Mumbani</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Solapur">Solapur</option>
+            </select>
+        </td>
+        <td>
+            <input type="text" (input)="onTextChnages()" placeholder="Course Name">
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="text" value="{{courseName}}" >
+        </td>
+
+         <td>
+            <input type="text" [value]="courseName" >
+        </td>
+        <td>
+            <label for=""> {{courseName}}</label>
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="courseName">
+        </td>
+        
+        
+    </tr>
+    <tr>
+          <td>
+             <select  [value]="selectedCityName">
+                 <option value="Pune">Pune</option>
+                <option value="Mumbani">Mumbani</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Solapur">Solapur</option>
+            </select>
+        </td>
+        <td>
+             <select  [(ngModel)]="selectedCityName">
+                 <option value="Pune">Pune</option>
+                <option value="Mumbani">Mumbani</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Solapur">Solapur</option>
+            </select>
+        </td>
+        <td>
+            selectedCityName => {{selectedCityName}}
+        </td>
+    </tr>
+    <tr>
+         <td>
+            <input type="checkbox" [checked]="isStudentActive">
+        </td>
+        <td>
+            <input type="checkbox" [(ngModel)]="isStudentActive">
+        </td>
+        <td>
+            isStudentActive => {{isStudentActive}}
+        </td>
+    </tr>
+         
+    <tr>
+        <td>
+            <input type="number"  [(ngModel)]="num1" placeholder="Num 1">
+        </td>
+        <td>
+            <input type="number"  [(ngModel)]="num2"  placeholder="Num 2">
+        </td> 
+        <td>
+             <button (click)="addNumbers()">Add</button>
+        </td> 
+        <td>
+            <input type="text"  [(ngModel)]="result" placeholder="Result">
+        </td>
+    </tr>
+
+
+</table>
+
+
+
+<div [class]="divClassName"  (mouseenter)="onMouseEnterDiv()" (mouseleave)="onMouseLeftDiv()">
+
+    121312
+</div>

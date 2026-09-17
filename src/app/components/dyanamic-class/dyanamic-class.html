@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-3">
+        <div class="p-4 " [ngClass]="div1Class">
+            Div 11
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngClass]="div2ClassName">
+            Div 22
+        </div>
+    </div>
+    <div class="col-3">
+        <div [class]="'p-4 ' + div3ClassName">
+            Div 33
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngClass]="isChecked == true ? 'bg-success' : 'bg-danger'">
+            Div 44
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <div [class]="'p-4 text-secondary ' + (isChecked == true ? 'bg-success' : 'bg-danger')">
+            fiv 55
+        </div>
+    </div>
+    <div class="col-3">
+        <div [class]="isChecked == true ? 'bg-success p-4 text-secondary' : 'bg-danger p-4 text-secondary'">
+            fiv 66
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-3">
+        <button (click)="addDiv1Color('bg-danger')">Red</button>
+        <button (click)="addDiv1Color('bg-warning')"> Yellow</button>
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="div2ClassName">
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="div3ClassName">
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isChecked">
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>city</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of employeeList; track $index) {
+                <tr>
+                    <td> {{$index +1}}</td>
+                    <td>{{item.empName}}</td>
+                    <td>{{item.city}}</td>
+                    <td [ngClass]="item.isActive == true ?'text-success':'text-danger'">
+                        {{item.isActive == true ?'Active':'De-Active'}}
+                    </td>
+                </tr>
+                } 
+            </tbody>
+        </table>
+    </div>
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let num of numberList" [ngClass]="num %2 == 0 ? 'text-primary' : 'text-danger'"> {{num}}</li>
+        </ul>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-3"> 
+        <div class="p-4" [ngStyle]="{'background-color': colorValue, color:'white' }">
+            div 11
+        </div>
+    </div>
+    <div class="col-3">
+       <div class="p-4" [ngStyle]="myCustomCss">
+                div 44
+       </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-3">
+       <button (click)="addColor('red')">Red</button>
+        <button (click)="addColor('green')"> Green</button>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="myName" [ngClass]="myName == ''? 'invalid-field' : '' " placeholder="name">
+    </div>
+        <div class="col-3">
+        <input type="text" [(ngModel)]="myName"  [class]="myName == ''? 'invalid-field' : '' " placeholder="name">
+    </div>
+     <div class="col-3">
+        <input type="text" [(ngModel)]="myName"  [ngStyle]="{'border-width': '10px','border-color':myName == ''? 'red':''}" placeholder="name">
+    </div>
+</div>

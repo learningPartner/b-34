@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+ 
+  :root{
+    --paper:      #F6F1E4;
+    --forest:     #22392C;
+    --forest-70:  #4A5F51;
+    --sage:       #9BB29B;
+    --sage-light: #DCE6D7;
+    --clay:       #C1512D;
+    --clay-dark:  #9A3E22;
+    --line:       #D8D0BC;
+  }
+ 
+  *{ box-sizing:border-box; }
+ 
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#EAE4D2;
+    font-family:'Inter', sans-serif;
+    padding:40px 20px;
+  }
+ 
+  .card{
+    width:290px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 1px 0 rgba(34,57,44,0.04);
+  }
+ 
+  /* ---------- Image / illustration area ---------- */
+  .card__media{
+    position:relative;
+    height:210px;
+    background:
+      radial-gradient(ellipse at 30% 20%, #EFE9D8 0%, var(--sage-light) 65%, #C9DAC4 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom:1px solid var(--line);
+  }
+ 
+  .stock-badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:var(--forest);
+    color:var(--paper);
+    font-size:11px;
+    letter-spacing:0.02em;
+    padding:5px 10px 4px;
+    border-radius:2px;
+    font-weight:500;
+  }
+ 
+  .fav-btn{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:rgba(246,241,228,0.9);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+  }
+  .fav-btn svg{ width:15px; height:15px; stroke:var(--forest); fill:none; stroke-width:1.6; }
+ 
+  /* product image */
+  .card__media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+ 
+  /* ---------- Body ---------- */
+  .card__body{
+    padding:18px 18px 16px;
+  }
+ 
+  .card__category{
+    font-size:11px;
+    color:var(--forest-70);
+    margin:0 0 6px;
+  }
+ 
+  .card__title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:21px;
+    color:var(--forest);
+    margin:0 0 4px;
+    line-height:1.2;
+  }
+ 
+  .card__desc{
+    font-size:13px;
+    color:var(--forest-70);
+    margin:0 0 14px;
+    line-height:1.5;
+  }
+ 
+  .card__meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:16px;
+  }
+ 
+  .meta-pill{
+    font-size:11px;
+    color:var(--forest);
+    background:var(--sage-light);
+    border-radius:2px;
+    padding:3px 8px;
+  }
+ 
+  .rating{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    font-size:12px;
+    color:var(--forest-70);
+    margin-left:auto;
+  }
+  .rating svg{ width:12px; height:12px; fill:var(--clay); }
+ 
+  .card__footer{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    border-top:1px dashed var(--line);
+    padding-top:14px;
+  }
+ 
+  .price-tag{ display:flex; flex-direction:column; }
+  .price-tag .unit{ font-size:11px; color:var(--forest-70); margin-bottom:2px; }
+  .price-tag .amount{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:600;
+    color:var(--clay-dark);
+  }
+  .price-tag .amount span{ font-size:13px; font-weight:500; color:var(--forest-70); }
+ 
+  .add-btn{
+    background:var(--forest);
+    color:var(--paper);
+    border:none;
+    border-radius:3px;
+    padding:10px 16px;
+    font-size:13px;
+    font-weight:500;
+    font-family:'Inter', sans-serif;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:background 0.15s ease;
+  }
+  .add-btn:hover{ background:var(--clay-dark); }
+  .add-btn svg{ width:13px; height:13px; stroke:var(--paper); fill:none; stroke-width:2; }
+ 
+  .add-btn:focus-visible,
+  .fav-btn:focus-visible{
+    outline:2px solid var(--clay);
+    outline-offset:2px;
+  }
+ 
+  @media (prefers-reduced-motion: reduce){
+    .add-btn{ transition:none; }
+  }

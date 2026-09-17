@@ -1,0 +1,342 @@
+ 
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="fName" placeholder="Firts nAme">
+    </div>
+     <div class="col-3">
+        <input type="text" [(ngModel)]="lName" placeholder="Last nAme">
+    </div>
+     <div class="col-2">
+        <input type="text" [value]="fName +' ' +lName" placeholder="Full nAme">
+    </div>
+    <div class="col-2">
+        <button (click)="generateFullName()">Generate</button>
+    </div>
+    <div class="col-2">
+        <input type="text" [(ngModel)]="fullName">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4 p-4">
+        <div class="bg-warning " *ngIf="isDiv1Visiable == true">
+            Div 11
+        </div>
+    </div>
+    <div class="col-4 p-4">
+        <textarea *ngIf="isAddressRequired == true" placeholder="Enter Address"></textarea>
+    </div>
+    <div class="col-4">
+        <div class="bg-danger p-4" *ngIf="num1 == num2">
+            div 333
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-4">
+        <button (click)="onShowDiv1()">Show</button>
+        <button (click)="onHideDiv1()">Hide</button>
+    </div>
+    <div class="col-4">
+        <input type="checkbox" [(ngModel)]="isAddressRequired" /> Addreee Required
+    </div>
+    <div class="col-4">
+        <input type="text" placeholder=" num 1" [(ngModel)]="num1">
+        <input type="text" placeholder=" num 2" [(ngModel)]="num2">
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        @if(isDiv4Visiable == true) {
+        <div class="bg-warning p-4">
+            Div 44
+        </div>
+        } @else {
+        <p>div not visiable</p>
+        }
+    </div>
+    <div class="col-3 p-4">
+        @if (num3 % 2 ==0) {
+        <p>No is Even</p>
+        } @else {
+        <p>No is Odd</p>
+        }
+    </div>
+    <div class="col-3">
+        @if (dayName == 'mon') {
+        <h5>Monday</h5>
+        } @else if (dayName == 'tue') {
+        <h5>Tuesday</h5>
+        } @else if(dayName == 'wed') {
+        <h5>wednesday</h5>
+        } @else {
+        @if (dayName !== '') {
+        <p>Wrong Entry</p>
+        }
+        }
+    </div>
+    <div class="col-3">
+        <h5 *ngIf="dayName == 'mon'">Monday</h5>
+
+        <h5 *ngIf="dayName == 'tue'">Tuesday</h5>
+
+        <h5 *ngIf="dayName == 'wed'">wednesday</h5>
+
+        <p *ngIf="dayName !== ''">
+            <span *ngIf="dayName !== 'mon' && dayName !== 'tue' && dayName !== 'wed'"> Wrong Entry</span>
+
+        </p>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-4">
+        <button (click)="toggleDiv4()">Toggle</button>
+    </div>
+    <div class="col-4">
+        <input type="text" [(ngModel)]="num3" placeholder="entre num" />
+    </div>
+    <div class="col-4">
+        <input type="text" [(ngModel)]="dayName" placeholder="Start Day name" maxlength="3">
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let cityName of cityList"> {{cityName}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-sm btn-primary" *ngFor="let city of cityList">
+            {{city}}
+        </button>
+    </div>
+    <div class="col-3">
+        <div *ngFor="let city of cityList">
+            <label for="">City Name</label>
+            <span> {{city}}</span>
+        </div>
+    </div>
+    <div class="col-3">
+        <select class="form-select" [(ngModel)]="selectedCity">
+            <option [value]="city" *ngFor="let city of cityList"> {{city}}</option>
+        </select>
+    </div> --{{selectedCity}}
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <ol>
+            @for (item of cityList; track $index) {
+            <li> {{item}}</li>
+            }
+
+        </ol>
+    </div>
+    <div class="col-3">
+        @for (city of cityList; track $index) {
+        <label for="">City Name :</label>
+        <button class="btn btn-sm btn-warning"> {{city}}</button>
+        }
+    </div>
+    <div class="col-3">
+        @for (cityName of cityList; track $index) {
+        <input type="text" [value]="cityName">
+        }
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Status</th>
+                    <th>Pint</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employeeList;let srno = index;let iseven = even;let isOdd = odd;let ifFirst =first;let isLast = last">
+                    <td> {{srno +1}} </td>
+                    <td> {{emp.empName}}</td>
+                    <td> {{emp.city}}</td>
+                    <td>{{emp.state}}</td>
+                    <td>{{emp.isActive}}</td>
+                    <td>
+                        {{iseven}} -- {{isOdd}}
+                        <br>
+                        {{ifFirst}} -{{isLast}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Status</th>
+                    <th>Status 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (employee of employeeList; track $index;let isFirst =$first; let isLast = $last) {
+                <tr>
+                    <td> {{$index +1}} </td>
+                    <td> {{employee.empName}}</td>
+                    <td> {{employee.city}}</td>
+                    <td>{{employee.state}}</td>
+                    <td>{{employee.isActive}}</td>
+                    <td>{{isFirst}} -- {{isLast}}</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-6">
+
+        <div class="row">
+            <div class="col-6 mb-2" *ngFor="let emp of employeeList">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{emp.empName}}</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                {{emp.city}}
+                            </div>
+                            <div class="col-6">
+                                {{emp.state}}
+                            </div>
+                        </div>
+                        <p class="card-text">{{emp.isActive}}</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-6">
+        <div class="row">
+            @for (emp of employeeList; track $index) {
+            <div class="col-6 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{emp.empName}}</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                {{emp.city}}
+                            </div>
+                            <div class="col-6">
+                                {{emp.state}}
+                            </div>
+                        </div>
+                        <p class="card-text">{{emp.isActive}}</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+<hr>
+<hr>
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employeeList;let srno = index">
+                    <td> {{srno +1}} </td>
+                    <td>
+                        <input type="text" [value]="emp.empName">
+                    </td>
+                    <td>
+                        <input type="text" [value]="emp.city">
+                    </td>
+                    <td>
+                        <input type="text" [value]="emp.state">
+                    </td>
+                    <td>
+                        <input type="checkbox" [checked]="emp.isActive">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-3" *ngFor="let prod of productList">
+        <div class="card">
+            <div class="card__media">
+                <span class="stock-badge">{{prod.productName}}</span>
+                <button class="fav-btn" aria-label="Save to favorites">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6l1.2 1.2L12 21l7.6-7.6 1.2-1.2a5.4 5.4 0 0 0 0-7.6z" />
+                    </svg>
+                </button>
+
+                <!-- product image: replace src with the real image URL -->
+                <img [src]="prod.productImage" alt="Bunch of fresh heirloom carrots">
+            </div>
+
+            <div class="card__body">
+                <p class="card__category">{{prod.farmerName}}</p>
+                <h2 class="card__title">{{prod.productName}}</h2>
+                
+
+                <div class="card__footer">
+                    <div class="price-tag">
+                        <span class="unit">per bunch</span>
+                        <span class="amount">${{prod.pricePerKg}} <span>/ 6 ct</span></span>
+                    </div>
+                    <button class="add-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H7" />
+                            <circle cx="10" cy="21" r="1" />
+                            <circle cx="18" cy="21" r="1" />
+                        </svg>
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

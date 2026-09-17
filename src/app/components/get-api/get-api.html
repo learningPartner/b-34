@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-3">
+        <button (click)="getAllUsers()">Get Users</button>
+    </div>
+    <div class="col-3">
+        <button (click)="getAllTodoItems()">Get Todo </button>
+    </div>
+     <div class="col-3">
+        <button (click)="getAllAlbums()">Get Albums </button>
+    </div>
+    <div class="col-3">
+        <button (click)="getAllCars()">Get Cars </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2">
+        <ul>
+            @for (item of userList; track $index) {
+                <li> {{item.username}} - {{item.email}}</li>
+            } 
+        </ul>
+    </div>
+    <div class="col-2">
+         <select>
+            @for (item of todoItemList(); track $index) {
+                <option >{{item.title}}</option>
+            }
+         </select>
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (item of albumList(); track $index) {
+                <li> {{item.title}}  </li>
+            } 
+        </ul>
+    </div>
+    <div class="col-5">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>vehcile</th>
+                    <th>vehcicle No</th>
+                    <th>Color</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of carList(); track $index) {
+                     <tr>
+                    <td> {{$index+1}}</td>
+                    <td>{{item.brand}} - {{item.model}}</td>
+                    <td>{{item.regNo}}</td>
+                    <td>{{item.color}}</td>
+                    <td>{{item.dailyRate}}</td> 
+                </tr>
+                }
+               
+            </tbody>
+        </table>
+    </div>
+</div>

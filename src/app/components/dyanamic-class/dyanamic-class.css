@@ -1,0 +1,8 @@
+.myColor1 {
+    background-color: thistle;
+}
+
+.invalid-field {
+    border-color: red;
+    border-width: 10px;
+}
