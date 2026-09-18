@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-7">
+        <div class="card">
+            <div class="card-header bg-success">
+                List
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header bg-success">
+                Form
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Customer Name</label>
+                        <input type="text" [(ngModel)]="newEnquiryObj.customerName" class="form-control" placeholder="Enter customer name">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Customer Email</label>
+                        <input type="email" [(ngModel)]="newEnquiryObj.customerEmail" class="form-control" placeholder="Enter email address">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Customer Phone</label>
+                        <input type="tel" [(ngModel)]="newEnquiryObj.customerPhone" class="form-control" placeholder="Enter phone number">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" [(ngModel)]="newEnquiryObj.categoryId">
+                            <option selected disabled>Select category</option>
+                             @for(item of categoryList();track $index) {
+                                <option [value]="item.categoryId"> {{item.categoryName}}</option>
+                             }
+                        </select>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" [(ngModel)]="newEnquiryObj.statusId">
+                            <option selected disabled>Select status</option>
+                           @for(item of statusList();track $index) {
+                                <option [value]="item.statusId"> {{item.statusName}}</option>
+                             }
+                        </select>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">Enquiry Type</label>
+                        <select class="form-select" [(ngModel)]="newEnquiryObj.enquiryType">
+                            <option selected disabled>Select type</option>
+                            <option>Phone</option>
+                            <option>Email</option>
+                            <option>Website</option>
+                        </select>
+                    </div> 
+                    <div class="col-12">
+                        <label class="form-label">Message</label>
+                        <textarea [(ngModel)]="newEnquiryObj.message" class="form-control" rows="3" placeholder="Enter enquiry message"></textarea>
+                    </div> 
+
+                    <div class="col-12 d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-outline-secondary">Reset</button>
+                        <button type="button" class="btn btn-success" (click)="onSaveEnquiry()">Save Enquiry</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

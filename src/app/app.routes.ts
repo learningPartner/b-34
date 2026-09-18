@@ -10,6 +10,8 @@ import { GetAPI } from './components/get-api/get-api';
 import { CarMaster } from './components/car-master/car-master';
 import { Vendors } from './components/vendors/vendors';
 import { BatchMaster } from './components/batch-master/batch-master';
+import { EnquiryMaster } from './components/enquiry-master/enquiry-master';
+import { Enrollments } from './components/enrollments/enrollments';
 
 export const routes: Routes = [
   {
@@ -37,6 +39,14 @@ export const routes: Routes = [
   {
     path: 'batch',
     component: BatchMaster,
+  }, 
+  {
+    path: 'enquiry',
+    component: EnquiryMaster,
+  }, 
+  {
+    path: 'enrollments',
+    component: Enrollments,
   }, 
   {
     path: 'cars',

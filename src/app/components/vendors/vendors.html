@@ -19,7 +19,9 @@
                         @for (item of carList(); track $index) {
                         <tr>
                             <td>{{$index +1}}</td>
-                            <td>{{item.vendorName}}</td> 
+                            <td>
+                               <input type="text" [(ngModel)]="item.vendorName"> 
+                                 </td> 
                             <td>{{item.emailId}}</td>
                                <td>{{item.contactNo}}</td>
                                <td>

@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './vendors.html',
 })
 export class Vendors {
-  carList = signal<any>([]);
+  
+  carList = signal<any[]>([]);
 
   httpClient = inject(HttpClient);
 
