@@ -12,6 +12,8 @@ import { Vendors } from './components/vendors/vendors';
 import { BatchMaster } from './components/batch-master/batch-master';
 import { EnquiryMaster } from './components/enquiry-master/enquiry-master';
 import { Enrollments } from './components/enrollments/enrollments';
+import { SignalBasic } from './components/signal-basic/signal-basic';
+import { BasicReactive } from './components/basic-reactive/basic-reactive';
 
 export const routes: Routes = [
   {
@@ -51,6 +53,14 @@ export const routes: Routes = [
   {
     path: 'cars',
     component: CarMaster,
+  },
+   {
+    path: 'signal-basic',
+    component:SignalBasic,
+  },
+   {
+    path: 'reactive-basic',
+    component:BasicReactive,
   },
   {
     path: 'vendor',

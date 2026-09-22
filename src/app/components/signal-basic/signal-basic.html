@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-3">
+        {{productName}}
+    </div>
+
+    <div class="col-2">
+        <button (click)="onChnage()">Chnage</button>
+    </div>
+    <div class="col-3">
+        {{productPrice()}}
+    </div>
+    <div class="col-2">
+        {{isProductActive()}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <button (click)="setTechName('Java')">Java</button>
+    </div>
+     <div class="col-3">
+        <button (click)="setTechName('Angular')">Angular</button>
+    </div>
+     <div class="col-3">
+        <button (click)="setTechName('Dot Net')">Dot Net</button>
+    </div>
+    <div class="col-3">
+        tech Name: {{techName()}}
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="cityName" placeholder="City Name">
+    </div>
+    <div class="col-2">
+        <button (click)="addCity()">Add City</button>
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (item of cityList(); track $index) {
+                <li>{{item}}</li>
+            }
+            
+        </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <button (click)="onDecrement()">--</button>
+    </div>
+     <div class="col-3">
+        <button>{{counter()}}</button>
+    </div>
+     <div class="col-3">
+        <button (click)="onIncrement()">++</button>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        <button (click)="chnageName('Rahul')">Name</button>
+    </div>
+    
+     <div class="col-3">
+        <button (click)="onIncrement()">++</button>
+    </div>
+    <div class="col-3">
+        {{student().studName}} <br>
+        {{student().studCity}}
+    </div>
+</div>
