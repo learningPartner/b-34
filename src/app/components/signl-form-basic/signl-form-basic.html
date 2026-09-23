@@ -1,0 +1,117 @@
+<main class="department-page container-fluid py-4 py-lg-5">
+	<div class="container">
+		<div class="page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+			<div>
+				<p class="eyebrow mb-2">Administration</p>
+				<h1 class="h2 mb-1">Department master</h1>
+				<p class="text-secondary mb-0">Create and manage departments from one place.</p>
+			</div>
+			<span class="record-count">3 departments</span>
+		</div>
+
+		<div class="row g-4 align-items-start">
+			<div class="col-12 col-lg-8">
+				<section class="surface-card h-100" aria-labelledby="department-form-title">
+					<div class="card-heading">
+						<div>
+							<p class="section-label mb-1">Department details</p>
+							<h2 id="department-form-title" class="h5 mb-0">Add department</h2>
+						</div>
+						<span class="status-dot">Draft</span>
+					</div>
+
+					<form class="department-form" >
+						<div class="row g-3"> 
+							<div class="col-12 col-md-8">
+								<label for="department-name" class="form-label">userName</label>
+								<input id="department-name" [formField]="userForm.userName" class="form-control" type="text" placeholder="e.g. Engineering" />
+							</div>
+							<div class="col-12">
+								<label for="department-logo" class="form-label">emailId</label>
+								<input id="department-logo"  [formField]="userForm.emailId"  class="form-control" type="url" placeholder="https://example.com/logo.svg" />
+								<div class="form-text">Use a square image for the best preview.</div>
+							</div>
+                            <div class="col-12 col-md-8">
+								<label for="department-name" class="form-label">fullName</label>
+								<input id="department-name"[formField]="userForm.fullName"  class="form-control" type="text" placeholder="e.g. Engineering" />
+							</div>
+							<div class="col-12">
+								<label for="department-logo" class="form-label">password</label>
+								<input id="department-logo" [formField]="userForm.password"  class="form-control" type="url" placeholder="https://example.com/logo.svg" />
+								<div class="form-text">Use a square image for the best preview.</div>
+							</div>
+						</div>
+
+						<div class="form-actions d-flex flex-column flex-sm-row justify-content-end gap-2 mt-4 pt-4">
+							<button class="btn btn-light border" type="button">Clear form</button>
+							<button class="btn btn-primary px-4" type="button" (click)="onSaveUser()" >Save department</button>
+						</div>
+					</form>
+				</section>
+			</div>
+
+			<div class="col-12 col-lg-4">
+				<aside class="preview-card" aria-labelledby="preview-title">
+					<div class="d-flex justify-content-between align-items-center mb-4">
+						<p class="section-label mb-0">Live preview</p>
+						<span class="preview-icon" aria-hidden="true">D</span>
+					</div>
+					<div class="department-avatar">D</div>
+					<h2 id="preview-title" class="h4 mt-3 mb-1">New department</h2>
+					<p class="text-secondary mb-4">Your department information will appear here.</p>
+					<div class="preview-meta">
+						<div>
+							<span class="meta-label">Department ID</span>
+							<strong>Not assigned</strong>
+						</div>
+						<div>
+							<span class="meta-label">Logo</span>
+							<strong>Not uploaded</strong>
+						</div>
+					</div>
+				</aside>
+			</div>
+
+			<div class="col-12">
+				<section class="surface-card" aria-labelledby="department-list-title">
+					<div class="card-heading">
+						<div>
+							<p class="section-label mb-1">Saved records</p>
+							<h2 id="department-list-title" class="h5 mb-0">All departments</h2>
+						</div>
+						<button class="btn btn-sm btn-outline-secondary" type="button">Export list</button>
+					</div>
+
+					<div class="table-responsive">
+						<table class="table align-middle mb-0">
+							<thead>
+								<tr>
+									<th scope="col">Sr No</th>
+									<th scope="col">Department name</th>
+									<th scope="col">Logo</th>
+									<th scope="col" class="text-end">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+                                <!-- @for (item of deptList(); track $index) {
+                                    <tr>
+									<td class="text-secondary">{{$index+1}}</td>
+									<td class="fw-semibold">{{item.departmentName}}</td>
+									<td><span class="logo-placeholder">
+                                        {{item.departmentLogo}}
+                                    </span></td>
+									<td class="text-end">
+                                        <button class="btn btn-sm btn-link text-decoration-none" (click)="onEdit(item)" type="button">Edit</button>
+                                        <button class="btn btn-sm btn-link text-danger text-decoration-none" type="button">Delete</button></td>
+								</tr>
+                                } -->
+								
+								 
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</main>

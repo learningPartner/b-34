@@ -14,6 +14,7 @@ import { EnquiryMaster } from './components/enquiry-master/enquiry-master';
 import { Enrollments } from './components/enrollments/enrollments';
 import { SignalBasic } from './components/signal-basic/signal-basic';
 import { BasicReactive } from './components/basic-reactive/basic-reactive';
+import { SignlFormBasic } from './components/signl-form-basic/signl-form-basic';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,10 @@ export const routes: Routes = [
   {
     path: 'datatypes',
     component: DataTypes,
+  },
+   {
+    path: 'signal-form',
+    component: SignlFormBasic,
   },
   {
     path: 'user',

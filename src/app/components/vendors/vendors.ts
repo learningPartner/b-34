@@ -1,15 +1,15 @@
+import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
-  imports: [FormsModule],
+  imports: [FormsModule, JsonPipe],
   selector: 'app-vendors',
   styleUrl: './vendors.css',
   templateUrl: './vendors.html',
 })
 export class Vendors {
-  
   carList = signal<any[]>([]);
 
   httpClient = inject(HttpClient);
@@ -27,6 +27,8 @@ export class Vendors {
     emailId: '',
   };
 
+  isButtonClicked = false;
+
   constructor() {
     this.getAllCars();
   }
@@ -42,29 +44,25 @@ export class Vendors {
     });
   }
 
-  onSaveVendor() {
-    // const vendorObj = {
-    //   vendorId: 0,
-    //   vendorName: this.vendorName,
-    //   contactNo: this.mobileNo,
-    //   emailId: this.email,
-    // };
-
-    const value = this.newVendorObj;
-    debugger;
-    this.httpClient
-      .post('https://projectapi.gerasim.in/api/BusBooking/PostBusVendor', this.newVendorObj)
-      .subscribe({
-        next: (response: any) => {
-          debugger;
-          alert('Car Has been Created Succes');
-          this.getAllCars();
-        },
-        error: (err: any) => {
-          debugger;
-          alert('Api error');
-        },
-      });
+  onSaveVendor(form: NgForm) { 
+    this.isButtonClicked = true;
+    if (!form.invalid) {
+      const value = this.newVendorObj;
+      debugger;
+      this.httpClient
+        .post('https://projectapi.gerasim.in/api/BusBooking/PostBusVendor', this.newVendorObj)
+        .subscribe({
+          next: (response: any) => {
+            debugger;
+            alert('Car Has been Created Succes');
+            this.getAllCars();
+          },
+          error: (err: any) => {
+            debugger;
+            alert('Api error');
+          },
+        });
+    }
   }
 
   editVendor(data: any) {
