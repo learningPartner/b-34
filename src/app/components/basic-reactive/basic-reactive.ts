@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { validate } from '@angular/forms/signals';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -12,8 +13,8 @@ export class BasicReactive implements OnInit {
 
   departmentForm: FormGroup = new FormGroup({
     departmentId: new FormControl(0),
-    departmentName: new FormControl(''),
-    departmentLogo: new FormControl(''),
+    departmentName: new FormControl('',[Validators.required, Validators.minLength(4)]),
+    departmentLogo: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
   });
 
   departmentForm2!: FormGroup;

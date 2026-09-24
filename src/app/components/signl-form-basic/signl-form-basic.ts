@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
-import { form, FormField } from '@angular/forms/signals';
+import { form, FormField, minLength, pattern, required } from '@angular/forms/signals';
 
 @Component({
   imports: [FormField],
@@ -18,7 +18,13 @@ export class SignlFormBasic {
     password: ''
   });
 
-  userForm = form(this.userSignal)
+  userForm = form(this.userSignal,(schema)=>{
+    required(schema.userName,{message:'This is Required'}),
+    required(schema.emailId,{ message:'Email is Required'}),
+    minLength(schema.userName,4, {message: 'Min 4 Char needed'}),
+    pattern(schema.emailId, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, {message:'email is not proper'})
+  })
+  
 
   http = inject(HttpClient);
 

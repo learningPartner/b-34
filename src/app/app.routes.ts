@@ -15,6 +15,7 @@ import { Enrollments } from './components/enrollments/enrollments';
 import { SignalBasic } from './components/signal-basic/signal-basic';
 import { BasicReactive } from './components/basic-reactive/basic-reactive';
 import { SignlFormBasic } from './components/signl-form-basic/signl-form-basic';
+import { PipesEx } from './components/pipes-ex/pipes-ex';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'adminpage',
     component: Admin,
+  },
+  {
+    path: 'pipe-ex',
+    component: PipesEx,
   },
   {
     path: 'data-binding',

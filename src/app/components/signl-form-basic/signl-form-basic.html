@@ -1,6 +1,7 @@
 <main class="department-page container-fluid py-4 py-lg-5">
 	<div class="container">
-		<div class="page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+		<div
+			class="page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
 			<div>
 				<p class="eyebrow mb-2">Administration</p>
 				<h1 class="h2 mb-1">Department master</h1>
@@ -20,31 +21,50 @@
 						<span class="status-dot">Draft</span>
 					</div>
 
-					<form class="department-form" >
-						<div class="row g-3"> 
+					<form class="department-form">
+						<div class="row g-3">
 							<div class="col-12 col-md-8">
 								<label for="department-name" class="form-label">userName</label>
-								<input id="department-name" [formField]="userForm.userName" class="form-control" type="text" placeholder="e.g. Engineering" />
+								<input id="department-name" [formField]="userForm.userName" class="form-control"
+									type="text" placeholder="e.g. Engineering" />
+								@if (userForm.userName().touched()) {
+								<div class="text-danger">
+									@for (item of userForm.userName().errors(); track $index) {
+									<span>{{item.message}}</span>
+									}
+								</div>
+								}
+
 							</div>
 							<div class="col-12">
 								<label for="department-logo" class="form-label">emailId</label>
-								<input id="department-logo"  [formField]="userForm.emailId"  class="form-control" type="url" placeholder="https://example.com/logo.svg" />
-								<div class="form-text">Use a square image for the best preview.</div>
+								<input id="department-logo" [formField]="userForm.emailId" class="form-control"
+									type="url" placeholder="https://example.com/logo.svg" />
+								@if (userForm.emailId().touched() ||userForm.emailId().dirty()  ) {
+								<div class="text-danger">
+									@for (item of userForm.emailId().errors(); track $index) {
+									<span>{{item.message}}</span>
+									}
+								</div>
+								}
 							</div>
-                            <div class="col-12 col-md-8">
+							<div class="col-12 col-md-8">
 								<label for="department-name" class="form-label">fullName</label>
-								<input id="department-name"[formField]="userForm.fullName"  class="form-control" type="text" placeholder="e.g. Engineering" />
+								<input id="department-name" [formField]="userForm.fullName" class="form-control"
+									type="text" placeholder="e.g. Engineering" />
 							</div>
 							<div class="col-12">
 								<label for="department-logo" class="form-label">password</label>
-								<input id="department-logo" [formField]="userForm.password"  class="form-control" type="url" placeholder="https://example.com/logo.svg" />
+								<input id="department-logo" [formField]="userForm.password" class="form-control"
+									type="url" placeholder="https://example.com/logo.svg" />
 								<div class="form-text">Use a square image for the best preview.</div>
 							</div>
 						</div>
 
 						<div class="form-actions d-flex flex-column flex-sm-row justify-content-end gap-2 mt-4 pt-4">
 							<button class="btn btn-light border" type="button">Clear form</button>
-							<button class="btn btn-primary px-4" type="button" (click)="onSaveUser()" >Save department</button>
+							<button class="btn btn-primary px-4" type="button" [disabled]="userForm().invalid()" (click)="onSaveUser()">Save
+								department</button>
 						</div>
 					</form>
 				</section>
@@ -93,7 +113,7 @@
 								</tr>
 							</thead>
 							<tbody>
-                                <!-- @for (item of deptList(); track $index) {
+								<!-- @for (item of deptList(); track $index) {
                                     <tr>
 									<td class="text-secondary">{{$index+1}}</td>
 									<td class="fw-semibold">{{item.departmentName}}</td>
@@ -105,8 +125,8 @@
                                         <button class="btn btn-sm btn-link text-danger text-decoration-none" type="button">Delete</button></td>
 								</tr>
                                 } -->
-								
-								 
+
+
 							</tbody>
 						</table>
 					</div>

@@ -25,17 +25,36 @@
 							<div class="col-12 col-md-8">
 								<label for="department-name" class="form-label">Department name</label>
 								<input id="department-name" formControlName="departmentName" class="form-control" type="text" placeholder="e.g. Engineering" />
+								<div class="text-danger">
+									@if (departmentForm.controls['departmentName'].touched || departmentForm.controls['departmentName'].dirty) {
+										@if (departmentForm.get('departmentName')?.errors?.['required']) {
+											<span>This is Required</span>
+										}
+										@if (departmentForm.get('departmentName')?.errors?.['minlength']) {
+											<span>min4 char needed</span>
+										}
+									}
+								</div>
 							</div>
 							<div class="col-12">
 								<label for="department-logo" class="form-label">Department logo URL</label>
 								<input id="department-logo" formControlName="departmentLogo" class="form-control" type="url" placeholder="https://example.com/logo.svg" />
-								<div class="form-text">Use a square image for the best preview.</div>
+							<div class="text-danger">
+									@if (departmentForm.controls['departmentLogo'].touched || departmentForm.controls['departmentLogo'].dirty) {
+										@if (departmentForm.get('departmentLogo')?.errors?.['required']) {
+											<span>This is Required</span>
+										}
+										@if (departmentForm.get('departmentLogo')?.errors?.['minlength']) {
+											<span>min 6 char needed</span>
+										}
+									}
+								</div>
 							</div>
 						</div>
 
 						<div class="form-actions d-flex flex-column flex-sm-row justify-content-end gap-2 mt-4 pt-4">
 							<button class="btn btn-light border" type="button">Clear form</button>
-							<button class="btn btn-primary px-4" type="button" (click)="onSaveDept()">Save department</button>
+							<button class="btn btn-primary px-4" type="button" [disabled]="departmentForm.invalid" (click)="onSaveDept()">Save department</button>
 						</div>
 					</form>
 				</section>

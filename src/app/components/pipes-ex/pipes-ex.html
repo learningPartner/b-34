@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-3">
+        {{courseName}}
+        <br>
+        upperCase => {{courseName | uppercase}}
+        <br>
+        lowerCase => {{courseName | lowercase}}
+        <br>
+        title => {{courseName | titlecase}}
+    </div>
+    <div class="col-3">
+        <input type="text" [value]="courseName | uppercase">
+    </div>
+    <div class="col-3">
+        {{producePRice}}
+        <br>
+        decimal => {{producePRice | number: '1.2-3'}}
+    </div>
+    <div class="col-3">
+        {{currentDate}}
+        <br>
+        {{currentDate | date}}
+        <br>
+        {{currentDate | date:'dd-MM-yy'}}
+        <br>
+        {{currentDate | date:'dd-MM-yyyy'}}
+        <br>
+        {{currentDate | date:'dd/MMM/yyyy'}}
+        <br>
+        {{currentDate | date:'dd/MMMM/yyyy'}}
+        <br>
+        {{currentDate | date:'dd/MMMM/yyyy hh:mm:ss'}}
+        <br>
+        {{currentDate | date:'short'}}
+        <br>
+        {{currentDate | date:'medium'}}
+        <br>
+        {{currentDate | date:'long'}}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        {{numbersArray}}
+        <br>
+        {{numbersArray | slice:0:5}}
+
+        <ul>
+            @for (item of numbersArray | slice:5:10; track $index) {
+            <li>
+                {{item}}
+            </li>
+            } 
+        </ul>
+    </div>
+    <div class="col-3">
+        {{studentObj}} 
+        <br>
+        {{studentObj| json}}
+    </div>
+</div>
