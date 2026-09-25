@@ -2,6 +2,9 @@ import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { CommonService } from '../../services/common-service';
+import { VendorService } from '../../services/vendor-service';
+import { IVendorModel, VendorModel } from '../../models/vendor.model';
 
 @Component({
   imports: [FormsModule, JsonPipe],
@@ -10,7 +13,8 @@ import { FormsModule, NgForm } from '@angular/forms';
   templateUrl: './vendors.html',
 })
 export class Vendors {
-  carList = signal<any[]>([]);
+  
+  vendorList = signal<VendorModel[]>([]);
 
   httpClient = inject(HttpClient);
 
@@ -20,57 +24,89 @@ export class Vendors {
 
   isEditMode = false;
 
-  newVendorObj = {
-    vendorId: 0,
-    vendorName: '',
-    contactNo: '',
-    emailId: '',
-  };
-
+  newVendorObj : VendorModel =  new VendorModel();
+  
   isButtonClicked = false;
+  cardNo = '';
+
+  commonSrv = inject(CommonService);
+  vendorSrv = inject(VendorService);
 
   constructor() {
+    const version =  this.commonSrv.versionName;
     this.getAllCars();
+    this.cardNo = this.commonSrv.formatAadharCard('2233223322334545');
   }
 
+  // formatAadharCard(cardNo: string) {
+  //   const last4Digit =  cardNo.slice(12);
+  //   const newStr = "**** **** ****" + last4Digit;
+  //   return newStr;
+  // }
+
   getAllCars() {
-    this.httpClient.get('https://projectapi.gerasim.in/api/BusBooking/GetBusVendors').subscribe({
+    debugger;
+    this.vendorSrv.getAllVendors().subscribe({
       next: (res: any) => {
-        this.carList.set(res);
-      },
-      error: (error: any) => {
-        alert('API Error');
+        debugger;
+        this.vendorList.set(res);
       },
     });
   }
 
-  onSaveVendor(form: NgForm) { 
+  // getAllCars() {
+  //   this.httpClient.get('https://projectapi.gerasim.in/api/BusBooking/GetBusVendors').subscribe({
+  //     next: (res: any) => {
+  //       this.carList.set(res);
+  //     },
+  //     error: (error: any) => {
+  //       alert('API Error');
+  //     },
+  //   });
+  // }
+
+  // onSaveVendor(form: NgForm) {
+  //   this.isButtonClicked = true;
+  //   if (!form.invalid) {
+  //     const value = this.newVendorObj;
+  //     debugger;
+  //     this.httpClient.post('https://projectapi.gerasim.in/api/BusBooking/PostBusVendor', this.newVendorObj)
+  //       .subscribe({
+  //         next: (response: any) => {
+  //           debugger;
+  //           alert('Car Has been Created Succes');
+  //           this.getAllCars();
+  //         },
+  //         error: (err: any) => {
+  //           debugger;
+  //           alert('Api error');
+  //         },
+  //       });
+  //   }
+  // }
+
+  onSaveVendor(form: NgForm) {
+    debugger;
     this.isButtonClicked = true;
     if (!form.invalid) {
       const value = this.newVendorObj;
       debugger;
-      this.httpClient
-        .post('https://projectapi.gerasim.in/api/BusBooking/PostBusVendor', this.newVendorObj)
-        .subscribe({
-          next: (response: any) => {
-            debugger;
-            alert('Car Has been Created Succes');
-            this.getAllCars();
-          },
-          error: (err: any) => {
-            debugger;
-            alert('Api error');
-          },
-        });
+      this.vendorSrv.onSaveVendor(this.newVendorObj).subscribe({
+        next: (response: any) => {
+          debugger;
+          alert('Car Has been Created Succes');
+          this.getAllCars();
+        },
+        error: (err: any) => {
+          debugger;
+          alert('Api error');
+        },
+      });
     }
   }
 
   editVendor(data: any) {
-    const strngObk = JSON.stringify(data);
-
-    const plainObj = JSON.parse(strngObk);
-
-    this.newVendorObj = plainObj;
+    this.newVendorObj = this.commonSrv.deepCopyVendorObject(data);
     this.isEditMode = true;
   }
 

@@ -1,5 +1,6 @@
 import { DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonService } from '../../services/common-service';
 
 @Component({
   imports: [UpperCasePipe, LowerCasePipe, TitleCasePipe,
@@ -23,10 +24,19 @@ export class PipesEx {
     state:'MH'
   }
 
+  oroginamCardNo  = "1212343454545657";
+  newCard= "";
 
 
-  constructor(){
-    
+
+  constructor(private commonSrv: CommonService){
+    this.newCard =  this.commonSrv.formatAadharCard(this.oroginamCardNo);
   }
+
+  // formatAadharCard(cardNo: string) {
+  //   const last4Digit =  cardNo.slice(12);
+  //   const newStr = "**** **** **** " + last4Digit;
+  //   return newStr;
+  // }
 
 }

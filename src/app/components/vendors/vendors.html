@@ -2,7 +2,7 @@
     <div class="col-8">
         <div class="card">
             <div class="card-header bg-success">
-                Vendor List
+                Vendor List - {{cardNo}}
             </div>
             <div class="card-body ">
                 <table class="table table-bordered responsive-table">
@@ -16,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (item of carList(); track $index) {
+                        @for (item of vendorList(); track $index) {
                         <tr>
                             <td>{{$index +1}}</td>
                             <td>

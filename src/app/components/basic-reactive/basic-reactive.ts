@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { validate } from '@angular/forms/signals';
+import { IDepartmentList } from '../../models/dept.model';
+import { IVendorModel, VendorModel } from '../../models/vendor.model';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -19,7 +21,9 @@ export class BasicReactive implements OnInit {
 
   departmentForm2!: FormGroup;
 
-  deptList = signal<any[]>([]);
+  vendorObj :  VendorModel = new VendorModel();
+
+  deptList = signal<IDepartmentList[]>([]);
 
   http = inject(HttpClient);
 
