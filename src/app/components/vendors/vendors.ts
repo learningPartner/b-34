@@ -5,9 +5,11 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CommonService } from '../../services/common-service';
 import { VendorService } from '../../services/vendor-service';
 import { IVendorModel, VendorModel } from '../../models/vendor.model';
+import { ShowMoreLess } from '../../reusable/show-more-less/show-more-less';
+import { Alert } from '../../reusable/alert/alert';
 
 @Component({
-  imports: [FormsModule, JsonPipe],
+  imports: [FormsModule, JsonPipe, ShowMoreLess,Alert],
   selector: 'app-vendors',
   styleUrl: './vendors.css',
   templateUrl: './vendors.html',

@@ -1,3 +1,32 @@
+<div class="row">
+	<div class="col-6">
+		<app-show-more-less [minCharCount]="10" [myText]="'this is sampletetx from singomr form component, My message to you is: if you re looking for a problem to'"></app-show-more-less>
+	</div>
+	<div class="col-6">
+		<app-show-more-less [myText]="textContent" [minCharCount]="100"></app-show-more-less>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-6">
+		<app-alert [alertType]="'Warning'" [alertMessage]="'User Alredy Exist'" [alertClass]="'alert-warning'"></app-alert>
+	</div>
+	<div class="col-6">
+		<app-alert [alertType]="'Error'" [alertMessage]="'Error Came while insert vendor'" [alertClass]="'alert-danger'"></app-alert>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-4">
+		 <app-progree-bar [progress]="20"></app-progree-bar>
+	</div>
+	<div class="col-4">
+			 <app-progree-bar [progress]="90"></app-progree-bar>
+	</div>
+	<div class="col-4">
+			 <app-progree-bar [progress]="50"></app-progree-bar>
+	</div>
+</div>
 <main class="department-page container-fluid py-4 py-lg-5">
 	<div class="container">
 		<div

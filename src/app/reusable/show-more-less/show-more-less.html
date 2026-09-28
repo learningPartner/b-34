@@ -1,0 +1,8 @@
+@if (isFullTextVisiable) {
+    <p>{{myText}} <span class="text-primary" (click)="toggle()">Show More /less</span></p> 
+} @else {
+    <p>{{myText.slice(0,minCharCount)}} <span class="text-primary" (click)="toggle()">Show More /less</span></p> 
+}
+
+
+

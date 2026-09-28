@@ -1,0 +1,28 @@
+<!-- <div class="alert" [ngClass]="{'alert-success': alertType == 'Success','alert-warning': alertType == 'Warning', 'alert-danger':alertType == 'Error' }">
+  <strong>{{alertType}}!</strong> {{alertMessage}}
+</div> -->
+
+<!-- <div class="alert" [ngClass]="getClassName()">
+  <strong>{{alertType}}!</strong> {{alertMessage}}
+</div> -->
+
+<div [class]="'alert' + getClassName()">
+  <strong>{{alertType}}!</strong> {{alertMessage}}
+</div>
+
+{{getClassName()}}
+
+<!-- 
+@if (alertType == 'Success') {
+<div class="alert alert-success">
+    <strong>{{alertType}}!</strong> {{alertMessage}}
+</div>
+} @else if (alertType == 'Warning') {
+<div class="alert alert-warning">
+    <strong>{{alertType}}!</strong> {{alertMessage}}
+</div>
+} @else if (alertType == 'Error') {
+<div class="alert alert-danger">
+    <strong>{{alertType}}!</strong> {{alertMessage}}
+</div>
+} -->
