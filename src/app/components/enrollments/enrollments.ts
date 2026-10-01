@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { FormatCardNoPipe } from '../../pipes/format-card-no-pipe';
 
 @Component({
-  imports: [],
+  imports: [FormatCardNoPipe],
   selector: 'app-enrollments',
   styleUrl: './enrollments.css',
   templateUrl: './enrollments.html',

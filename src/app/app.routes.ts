@@ -16,6 +16,7 @@ import { SignalBasic } from './components/signal-basic/signal-basic';
 import { BasicReactive } from './components/basic-reactive/basic-reactive';
 import { SignlFormBasic } from './components/signl-form-basic/signl-form-basic';
 import { PipesEx } from './components/pipes-ex/pipes-ex';
+import { ViewChildEx } from './components/view-child/view-childEx';
 
 export const routes: Routes = [
   {
@@ -35,6 +36,10 @@ export const routes: Routes = [
   {
     path: 'data-binding',
     component: DataBindings,
+  },
+   {
+    path: 'viewchild',
+    component: ViewChildEx,
   },
   {
     path: 'datatypes',

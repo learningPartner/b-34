@@ -8,6 +8,23 @@
         <app-alert [alertType]="'Success'" [alertMessage]="'Welcome to Vendor Portal'" [alertClass]="'alert-success'"></app-alert>
     </div>
 </div>
+<div class="row">
+    <div class="col-6">
+        <app-list-box [itemList]="roleList" [selectedItem]="'Employee'" (getSelectedItem)="getSelectedRole($event)"></app-list-box>
+    </div>
+     <div class="col-6">
+        <app-list-box [itemList]="documentList" [selectedItem]="'Election Card'" (getSelectedItem)="onDocumentSelection($event)"></app-list-box>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        {{cardNo|formatCardNo}}
+    </div>
+
+     <div class="col-3">
+        {{'9999888877776565'|formatCardNo}}
+    </div>
+</div>
 
 <div class="row">
     <div class="col-8">
@@ -27,16 +44,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (item of vendorList(); track $index) {
+                        @for (item of vendorList$ | async; track $index) {
                         <tr>
                             <td>{{$index +1}}</td>
                             <td>
                                 <input type="text" [(ngModel)]="item.vendorName">
                             </td>
-                            <td>{{item.emailId}}</td>
-                            <td>{{item.contactNo}}</td>
+                            <td>{{item.emailId| na:'No Email Present'}}</td>
+                            <td>{{item.contactNo | na:'--'}}</td>
                             <td>
-                                <button class="btn btn-primary" (click)="editVendor(item)">Edit</button>
+                                <!-- <button class="btn btn-primary" (click)="editVendor(item)">Edit</button> -->
+                                <app-my-button [btnText]="'Edit vendor'" [btnColorClass]="'btn-success'"
+                                    (onBtnClick)="editVendor(item)"></app-my-button>
+
                                 <button class="btn btn-danger" (click)="onDeleteVendor(item.vendorId)">Delete</button>
                             </td>
                         </tr>

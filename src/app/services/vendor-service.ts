@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IVendorModel } from '../models/vendor.model';
 
 @Service()
 export class VendorService {
 
     http = inject(HttpClient);
 
-    getAllVendors() {
+    getAllVendors(): Observable<IVendorModel[]> {
         debugger;
-        return this.http.get("https://projectapi.gerasim.in/api/BusBooking/GetBusVendors");
+        return this.http.get<IVendorModel[]> ("https://projectapi.gerasim.in/api/BusBooking/GetBusVendors");
     }
 
     onSaveVendor(data:any) {
