@@ -1,0 +1,108 @@
+<div class="row">
+    <div class="col-3">
+         <ng-container *ngTemplateOutlet="formLable; context:{tooltip:'Enter Full Name',icon:'fa-user',text:'Enter Name'}"> </ng-container>
+        <input type="text">
+    </div>
+    <div class="col-3">
+         <ng-container *ngTemplateOutlet="formLable; context:{tooltip:'Enter Valid Addhar',icon:'fa-phone',text:'Enter Aadhar'}"> </ng-container>
+        <input type="text">
+    </div>
+    <div class="col-3">
+        <ng-container *ngTemplateOutlet="formLable; context:{tooltip:'Enter email',icon:'fa-email',text:'Enter Email'}"> </ng-container>
+        <input type="text">
+    </div>
+    <div class="col-3">
+         <ng-container *ngTemplateOutlet="formLable; context:{tooltip:'Enter Full Name',icon:'fa-user',text:'Enter Name'}"> </ng-container>
+        <input type="text">
+    </div>
+    <div class="col-3">
+        <ng-container *ngTemplateOutlet="formLable; context:{tooltip:'Enter Full Name',icon:'fa-user',text:'Enter Name'}"> </ng-container>
+        <input type="text">
+    </div>
+    <div class="col-3">
+        <ng-container *ngTemplateOutlet="formLable; context:{tooltip:'Enter Full Name',icon:'fa-user',text:'Enter Name'}"> </ng-container>
+        <input type="text">
+    </div>
+</div>
+
+<ng-template #formLable let-title="tooltip" let-iconClass="icon" let-text="text">
+     <label title="{{title}}"> <i [class]="'fa ' +iconClass"></i> {{text}}</label>
+</ng-template>
+
+<div class="row">
+    <div class="col-4">
+        <ng-container *ngTemplateOutlet="hiTem">
+
+        </ng-container>
+    </div>
+    <div class="col-4">
+        <ng-template #hiTem>
+            Hi,
+            from template
+        </ng-template>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <div *ngIf="isDiv1Visiable else divElseTem" class="p-4 bg-success">
+            div 1
+        </div>
+    </div>
+    <div class="col-3">
+        <ul *ngIf="cityList.length != 0 else emptyCitytem">
+            <li *ngFor="let city of cityList"> {{city}}</li>
+        </ul>
+    </div>
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>title</th>
+                    <th>Url</th>
+                    <th>Thum bnail</th>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="isLoader()">
+                    <tr>
+                        <td colspan="4">
+                            <div class="spinner-grow text-muted"></div>
+                            <div class="spinner-grow text-primary"></div>
+                            <div class="spinner-grow text-success"></div>
+                            <div class="spinner-grow text-info"></div>
+                            <div class="spinner-grow text-warning"></div>
+                            <div class="spinner-grow text-danger"></div>
+                            <div class="spinner-grow text-secondary"></div>
+                            <div class="spinner-grow text-dark"></div>
+                            <div class="spinner-grow text-light"></div>
+                        </td>
+                    </tr>
+                </ng-container>
+                <ng-container *ngIf="!isLoader()">
+                    <tr *ngFor="let emp of postList();let srno = index;">
+                        <td> {{srno +1}} </td>
+                        <td> {{emp.title}}</td>
+                        <td> {{emp.url}}</td>
+                        <td>{{emp.thumbnailUrl}}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <button (click)="isDiv1Visiable = !isDiv1Visiable">Toggle</button>
+    </div>
+</div>
+
+<ng-template #divElseTem>
+    <p> Div is Hidden</p>
+</ng-template>
+
+<ng-template #emptyCitytem>
+    <strong> City List is empty</strong>
+</ng-template>

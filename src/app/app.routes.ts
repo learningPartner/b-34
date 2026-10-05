@@ -17,6 +17,7 @@ import { BasicReactive } from './components/basic-reactive/basic-reactive';
 import { SignlFormBasic } from './components/signl-form-basic/signl-form-basic';
 import { PipesEx } from './components/pipes-ex/pipes-ex';
 import { ViewChildEx } from './components/view-child/view-childEx';
+import { TemplateContainer } from './components/template-container/template-container';
 
 export const routes: Routes = [
   {
@@ -40,6 +41,10 @@ export const routes: Routes = [
    {
     path: 'viewchild',
     component: ViewChildEx,
+  },
+   {
+    path: 'template',
+    component: TemplateContainer,
   },
   {
     path: 'datatypes',

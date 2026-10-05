@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Hightlight } from '../../directives/hightlight';
 
 @Component({
-  imports: [],
+  imports: [Hightlight],
   selector: 'app-user-page',
   styleUrl: './user-page.css',
   templateUrl: './user-page.html',

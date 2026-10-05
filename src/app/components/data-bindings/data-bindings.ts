@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Hightlight } from '../../directives/hightlight';
+import { NumbersOnly } from '../../directives/numbers-only';
 
 @Component({
-  imports: [FormsModule,RouterLink],
+  imports: [FormsModule,RouterLink,Hightlight, NumbersOnly],
   selector: 'app-data-bindings',
   styleUrl: './data-bindings.css',
   templateUrl: './data-bindings.html',

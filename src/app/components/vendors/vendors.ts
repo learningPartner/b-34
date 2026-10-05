@@ -12,9 +12,10 @@ import { ListBox } from '../../reusable/list-box/list-box';
 import { FormatCardNoPipe } from '../../pipes/format-card-no-pipe';
 import { NaPipe } from '../../pipes/na-pipe';
 import { Observable, Subscription } from 'rxjs';
+import { ReadonlyDir } from '../../directives/readonly-dir';
 
 @Component({
-  imports: [FormsModule, JsonPipe, ShowMoreLess, Alert, MyButton, ListBox, FormatCardNoPipe, NaPipe,AsyncPipe],
+  imports: [FormsModule, JsonPipe,ReadonlyDir, ShowMoreLess, Alert, MyButton, ListBox, FormatCardNoPipe, NaPipe,AsyncPipe],
   selector: 'app-vendors',
   styleUrl: './vendors.css',
   templateUrl: './vendors.html',

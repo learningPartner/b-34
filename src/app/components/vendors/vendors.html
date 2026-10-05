@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="">Vendor Name</label>
-                            <input type="text" [(ngModel)]="newVendorObj.vendorName" name="vendorName" #vName="ngModel"
+                            <input type="text" appReadonlyDir [(ngModel)]="newVendorObj.vendorName" name="vendorName" #vName="ngModel"
                                 required minlength="3" class="form-control">
                             @if(vName.touched || vName.dirty || isButtonClicked) {
                             <div class="text-danger">
@@ -92,7 +92,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label for="">Email</label>
-                            <input type="text" [(ngModel)]="newVendorObj.emailId" name="emailId" #email="ngModel"
+                            <input type="text" appReadonlyDir [(ngModel)]="newVendorObj.emailId" name="emailId" #email="ngModel"
                                 required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" class="form-control">
                             @if(vName.touched || vName.dirty || isButtonClicked) {
                             <div class="text-danger">
@@ -108,7 +108,7 @@
                         </div>
                         <div class="col-6">
                             <label for="">Mobile No</label>
-                            <input type="text" [(ngModel)]="newVendorObj.contactNo" #mobile="ngModel" name="contactNo"
+                            <input type="text" appReadonlyDir [(ngModel)]="newVendorObj.contactNo" #mobile="ngModel" name="contactNo"
                                 required minlength="10" maxlength="10" class="form-control">
                             @if(mobile.touched || mobile.dirty || isButtonClicked) {
                             <div class="text-danger">
